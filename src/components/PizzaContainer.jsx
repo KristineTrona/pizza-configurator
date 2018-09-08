@@ -15,7 +15,8 @@ class PizzaContainer extends React.Component {
     sauce: "",
     topping1: "",
     topping2: "",
-    topping3: ""
+    topping3: "",
+    showDelivery: false
   }
 
   componentDidMount() {
@@ -46,7 +47,11 @@ class PizzaContainer extends React.Component {
         .filter(topping => topping !== ""))
       this.props.updateCostToppings([this.state.topping1, 
         this.state.topping2, this.state.topping3]
-        .filter(topping => topping !== "").length) 
+        .filter(topping => topping !== "").length)
+    
+      this.setState({...this.state,
+        showDelivery: true}
+      )
 
     } else if (!this.state.base) {
         event.preventDefault()
@@ -58,6 +63,7 @@ class PizzaContainer extends React.Component {
         event.preventDefault()
         window.alert("Please choose at least one topping")
     }
+
   }
 
   updatePizzaCost = () => {
@@ -79,7 +85,7 @@ class PizzaContainer extends React.Component {
         <p>Choose up to 3 toppings:</p>
           <PizzaToppings toppings = {this.props.pizza.toppings} 
             onChange={this.onChange} onSubmit={this.onSubmit}/>
-          <Delivery/>
+          {this.state.showDelivery ? <Delivery/> : null}
           <p>Total cost: 	&euro; {this.updatePizzaCost()}</p>
           <Link to={"/order-complete"}>
             <button onClick={this.completeOrder}>Complete order</button>

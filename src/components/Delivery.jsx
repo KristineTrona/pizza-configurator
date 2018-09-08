@@ -21,7 +21,7 @@ class Delivery extends React.Component {
 
   render() {
     return(
-      <div className = "delivery">
+      <div className = "delivery" >
         <form>
           <p>
             <input type= "checkbox" onChange= {this.toggle}/>

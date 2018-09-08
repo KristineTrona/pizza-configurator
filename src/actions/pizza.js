@@ -9,6 +9,7 @@ export const UPDATE_COST_BASE = "UPDATE_COST_BASE"
 export const UPDATE_COST_SAUCE = "UPDATE_COST_SAUCE"
 export const UPDATE_COST_TOPPINGS = "UPDATE_COST_TOPPINGS"
 export const ADD_TURBO_DELIVERY = "ADD_TURBO_DELIVERY"
+export const NEW_ORDER = "NEW_ORDER"
 
 export function loadPizzas() {
     return {
@@ -66,5 +67,11 @@ export function addTurboDelivery(checkbox) {
   return {
     type: ADD_TURBO_DELIVERY,
     payload: checkbox
+  }
+}
+
+export function newOrder() {
+  return {
+    type: NEW_ORDER
   }
 }
