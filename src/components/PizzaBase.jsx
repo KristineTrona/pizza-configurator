@@ -10,6 +10,5 @@ export default function pizzaBase (props){
           <option key = "" value = ""> Select size</option>
           {props.bases.map(base => <option key = {base.title} value={base.title}>{base.title} 	&euro; {base.price.toFixed(2)}</option>)}
           </select>
-        <button type = "submit">Submit</button>
     </form>)     
 }
