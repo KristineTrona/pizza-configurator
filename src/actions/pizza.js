@@ -3,7 +3,9 @@ import {base, sauce, toppings} from '../lib/pizzaData'
 
 export const LOAD_PIZZAS = "LOAD_PIZZAS"
 export const SELECT_BASE = "SELECT_BASE"
-export const UPDATE_COST = "UPDATE_COST"
+export const SELECT_SAUCE = "SELECT_SAUCE"
+export const UPDATE_COST_BASE = "UPDATE_COST_BASE"
+export const UPDATE_COST_SAUCE = "UPDATE_COST_SAUCE"
 
 export function loadPizzas() {
     return {
@@ -22,9 +24,23 @@ export function selectBase(base) {
   }
 }
 
-export function updateCost(price) {
+export function updateCostBase(basePrice) {
   return {
-    type: UPDATE_COST,
-    payload: price
+    type: UPDATE_COST_BASE,
+    payload: basePrice
+  }
+}
+
+export function selectSauce(souce) {
+  return {
+    type: SELECT_BASE,
+    payload: souce
+  }
+}
+
+export function updateCostSauce(saucePrice) {
+  return {
+    type: UPDATE_COST_SAUCE,
+    payload: saucePrice
   }
 }
