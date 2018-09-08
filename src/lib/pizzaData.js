@@ -54,3 +54,5 @@ const toppings = [
     price: 0.50
   }
 ]
+
+export {base, sauce, toppings}
