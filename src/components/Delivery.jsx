@@ -23,12 +23,10 @@ class Delivery extends React.Component {
     return(
       <div className = "delivery">
         <form>
-          <label>
-            <p>
+          <p>
             <input type= "checkbox" onChange= {this.toggle}/>
-             <span> Add turbo drone delivery for </span> &euro; {(0.1 * this.pizzaCost()).toFixed(2)} <span> extra cost </span>
-            </p>
-          </label>
+            <span> Add turbo drone delivery for </span> &euro; {(0.1 * this.pizzaCost()).toFixed(2)} <span> extra cost </span>
+          </p>
         </form>
       </div>)
   }  

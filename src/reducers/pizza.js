@@ -4,7 +4,7 @@ import { LOAD_PIZZAS, SELECT_BASE, SELECT_TOPPINGS, UPDATE_COST_BASE,
 
 
 const initialState = {bases: [], sauces: [], toppings: [], base: "", sauce: "", 
-topping: "", priceBase: 0, priceSauce: 0, priceToppings: 0, priceDelivery: 0}
+selectedToppings: [], priceBase: 0, priceSauce: 0, priceToppings: 0, priceDelivery: 0}
 
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
@@ -33,7 +33,7 @@ const reducer = (state = initialState, action = {}) => {
     case SELECT_TOPPINGS:
       return {
         ...state,
-        topping: action.payload
+        selectedToppings: action.payload
       }
     case UPDATE_COST_TOPPINGS:
       return {

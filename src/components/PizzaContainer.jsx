@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { Link } from 'react-router-dom'
 import {connect} from 'react-redux';
 import PizzaBase from './PizzaBase'
 import PizzaSauce from './PizzaSauce'
@@ -17,6 +18,10 @@ class PizzaContainer extends React.Component {
     topping3: ""
   }
 
+  componentDidMount() {
+    this.props.loadPizzas()
+  }
+
   onChange = (event) => {
       this.setState({
         ...this.state,
@@ -25,29 +30,35 @@ class PizzaContainer extends React.Component {
   }
 
   onSubmit = (event) => {
-    if(this.state.base && this.state.sauce){
-
+    if(this.state.base && this.state.sauce && (this.state.topping1 || this.state.topping2 || this.state.topping3)){
       event.preventDefault()
+
       this.props.selectBase(this.state.base)
       this.props.updateCostBase(this.props.pizza.bases
         .find(base => base.title===this.state.base).price)
+
       this.props.selectSauce(this.state.sauce)
       this.props.updateCostSauce(this.props.pizza.sauces
         .find(sauce => sauce.title===this.state.sauce).price)
-      this.props.selectToppings([this.state.topping1, this.state.topping2, this.state.topping3]
+
+      this.props.selectToppings([this.state.topping1, 
+        this.state.topping2, this.state.topping3]
         .filter(topping => topping !== ""))
-      this.props.updateCostToppings([this.state.topping1, this.state.topping2, this.state.topping3]
+      this.props.updateCostToppings([this.state.topping1, 
+        this.state.topping2, this.state.topping3]
         .filter(topping => topping !== "").length) 
 
-    } else if (this.state.sauce) {
+    } else if (!this.state.base) {
         event.preventDefault()
         window.alert("Please choose a size for your pizza!")
-    } else {
+    } else if (!this.state.sauce){
         event.preventDefault()
-        window.alert("Please choose one of the sauce options!")
+        window.alert("Please choose a sauce for your pizza")
+    } else{
+        event.preventDefault()
+        window.alert("Please choose at least one topping")
     }
   }
-
 
   updatePizzaCost = () => {
     const totalCost = this.props.pizza.priceBase + this.props.pizza.priceSauce 
@@ -55,20 +66,24 @@ class PizzaContainer extends React.Component {
     return totalCost.toFixed(2)
   }
 
-  componentDidMount() {
-      this.props.loadPizzas()
-    }
+  completeOrder = () => {
+
+  }
 
   render() {
     return(
       <div className = "pizza-container">
         <h1>Welcome to NewAgePizza!</h1>
-        <PizzaBase bases= {this.props.pizza.bases} onChange={this.onChange}/>
-        <PizzaSauce sauces = {this.props.pizza.sauces} onChange={this.onChange}/>
-        <PizzaToppings toppings = {this.props.pizza.toppings} onChange={this.onChange} onSubmit={this.onSubmit}/>
-        <Delivery/>
-        <p>Total cost: 	&euro; {this.updatePizzaCost()}</p>
-        <button>Complete order</button>
+          <PizzaBase bases= {this.props.pizza.bases} onChange={this.onChange}/>
+          <PizzaSauce sauces = {this.props.pizza.sauces} onChange={this.onChange}/>
+        <p>Choose up to 3 toppings:</p>
+          <PizzaToppings toppings = {this.props.pizza.toppings} 
+            onChange={this.onChange} onSubmit={this.onSubmit}/>
+          <Delivery/>
+          <p>Total cost: 	&euro; {this.updatePizzaCost()}</p>
+          <Link to={"/order-complete"}>
+            <button onClick={this.completeOrder}>Complete order</button>
+          </Link>
       </div>)
   }  
 }
