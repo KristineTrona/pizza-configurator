@@ -80,16 +80,30 @@ class PizzaContainer extends React.Component {
     return(
       <div className = "pizza-container">
         <h1>Welcome to NewAgePizza!</h1>
-          <PizzaBase bases= {this.props.pizza.bases} onChange={this.onChange}/>
-          <PizzaSauce sauces = {this.props.pizza.sauces} onChange={this.onChange}/>
-        <p>Choose up to 3 toppings:</p>
-          <PizzaToppings toppings = {this.props.pizza.toppings} 
-            onChange={this.onChange} onSubmit={this.onSubmit}/>
-          {this.state.showDelivery ? <Delivery/> : null}
-          <p>Total cost: 	&euro; {this.updatePizzaCost()}</p>
-          <Link to={"/order-complete"}>
-            <button onClick={this.completeOrder}>Complete order</button>
-          </Link>
+          <div className = "grid-wrapper-1">
+            <div className= "left-side">
+              <PizzaBase bases= {this.props.pizza.bases} onChange={this.onChange}/>
+              <PizzaSauce sauces = {this.props.pizza.sauces} onChange={this.onChange}/>
+            </div>
+            <div className = "right-side">
+              Choose up to 3 toppings: <br/>
+              <PizzaToppings toppings = {this.props.pizza.toppings} 
+                onChange={this.onChange} onSubmit={this.onSubmit}/>
+            </div>
+          </div>
+          <div className = "grid-wrapper-2">
+            <div className = "delivery">
+              {this.state.showDelivery ? <Delivery/> : null}
+            </div>
+            <div>
+              <p className = "totalCost">Total cost: 	&euro; {this.updatePizzaCost()}</p>
+            </div>
+            <div>
+              <Link to={"/order-complete"}>
+                <button onClick={this.completeOrder}>Complete order</button>
+              </Link>
+            </div>
+          </div>
       </div>)
   }  
 }

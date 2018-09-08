@@ -5,8 +5,8 @@ export default function pizzaSauce (props){
     return <h1>Loading...</h1>
   return (
     <form className = "pizza-sauce-form" onSubmit={props.onSubmitSauce}>
-      <label htmlFor="sauce-selector">Choose a sauce:</label>
-        <select id = "sauce-selector" name="sauce" onChange={props.onChange}>
+      <label htmlFor="sauce-selector">Choose a sauce:</label><br/>
+        <select className = "select-dropdown" id = "sauce-selector" name="sauce" onChange={props.onChange}>
           <option key = "" value = ""> Select sauce</option>
           {props.sauces.map(sauce => <option key = {sauce.title} value={sauce.title}>{sauce.title} 	&euro; {sauce.price.toFixed(2)}</option>)}
           </select>

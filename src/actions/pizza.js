@@ -1,6 +1,5 @@
 import {base, sauce, toppings} from '../lib/pizzaData'
 
-
 export const LOAD_PIZZAS = "LOAD_PIZZAS"
 export const SELECT_BASE = "SELECT_BASE"
 export const SELECT_SAUCE = "SELECT_SAUCE"

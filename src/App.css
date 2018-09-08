@@ -1,3 +1,124 @@
+.app{
+  background-image: url('./lib/images/pizza-background.jpg');
+  background-size: 40%;
+  font-family: 'Varela Round', sans-serif;
+  height: 100vh;
+  opacity: 0.9;
+}
+
+h1, h2 {
+  text-align: center;
+}
+
+h3{
+  font-size: 22px;
+}
+
 ul {
   list-style-type: none;
+}
+
+.pizza-container{
+  background-color: rgba(244, 235, 195, 0.8);
+  width: 600px;
+  position: relative;
+  top: 7vh;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 1;
+  padding: 20px;
+}
+
+.grid-wrapper-1{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+}
+
+.pizza-sauce-form{
+  padding-top: 20px;
+}
+
+.grid-wrapper-2{
+  position: relative;
+  top: -40px;
+  height: 200px;
+  width: 280px;
+  margin-left: auto;
+  margin-right: auto;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  justify-items: center;
+}
+
+.totalCost{
+  font-weight: bold;
+  font-size: 20px;
+}
+
+button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.delivery {
+  padding-top: 20px;
+  padding-left: 10px;
+}
+
+.delivery label{
+  padding-left: 12px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+input[type="checkbox"]{
+  padding: 5px;
+  transform: scale(2);
+}
+
+.submit-pizza{
+  position: relative;
+  left: -92px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.order-details{
+  background-color: rgba(244, 235, 195, 0.8);
+  width: 600px;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  top: 10vh;
+  z-index: 1;
+  padding: 30px;
+}
+
+.select-dropdown {
+  width: 200px;
+  height: 35px;
+  padding-left: 10px;
+  font-size: 12px;
+  margin: 15px 15px 10px;
+  box-sizing: border-box;
+  border: 2px solid #C34E59;
+  -webkit-appearance: none;
+  -webkit-border-radius: 0px;
+  border-radius: 0%;
+  background: url("./lib/images/select-arrow.png") no-repeat right;
+  background-color: white;
+  background-position:94%;
+  background-size: 7%;
+}
+
+.detail{
+  font-weight: bold;
+  padding-left: 20px;
 }
